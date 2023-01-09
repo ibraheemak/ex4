@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-Card::Card( string name)
+Card::Card(string name)
 {
     if(name.find(' ')||name.length()>15)
     {

@@ -1,7 +1,6 @@
 #include "Card.h"
 #include <algorithm>
 #include <string>
-#include "../Players/Player.h"
 #include "BattleCard.h"
 using namespace std;
 
