@@ -19,7 +19,7 @@ public:
     Card& operator=(const Card& anotherCard)=default;
     virtual ~Card() = default; //use default?
     friend ostream& operator<<(ostream& os, const Card& card);
-    virtual void printInfo(ostream& os) const {};
+    virtual void printInfo(ostream& os) const{} ;
     
 protected://editt12
     string m_name;

@@ -8,4 +8,4 @@ const string Warrior::getType()const
 {
     return "Warrior";
 }
-Warrior::Warrior(const char* playerName) :Player(playerName){};
+Warrior::Warrior(const string playerName) :Player(playerName){};

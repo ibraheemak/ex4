@@ -3,7 +3,7 @@
 using namespace std;
 
 
-Player::Player(const char* playerName) : m_name(playerName),m_force(DEAFULT_FORCE),m_level(MIN_LEVEL),m_coins(INITIAL_COINS),m_HP(DEAFULT_MAX_HP) {}
+Player::Player(const string playerName) : m_name(playerName),m_force(DEAFULT_FORCE),m_level(MIN_LEVEL),m_coins(INITIAL_COINS),m_HP(DEAFULT_MAX_HP) {}
 
 
 // CHECK

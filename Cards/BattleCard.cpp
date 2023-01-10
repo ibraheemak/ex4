@@ -19,3 +19,5 @@ void BattleCard::Encounter(Player &player) const {
 }
 
 
+
+
