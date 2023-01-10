@@ -11,10 +11,12 @@ Witch::Witch(string name): BattleCard(name,DEFAULT_POWER,DEFAULT_LOOT,DEFAULT_DA
 void Witch::applyVictory(Player &player) const {
     player.levelUp();
     player.addCoins(m_loot);
+     printWinBattle(player.getName(),m_name);
 }
 
 void Witch::applyDefeat(Player &player) const {
     player.damage(m_damage);
-    // player.decreaseForce(1); //!!! need to define this
+    player.decreaseForce(1); //!!! need to define this
+     printLossBattle(player.getName(),m_name);
     // player.buff(FORCE_DAMAGE); // BUFF CHECKS IF ITS POSITIVE, BUT DEFAULT_DAMAGE IS NEGATIVE
 }

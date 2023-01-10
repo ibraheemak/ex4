@@ -20,7 +20,7 @@ public:
 private:
     static const int DEFAULT_POWER=25;
     static const int DEFAULT_LOOT=1000;
-    static const int DEFAULT_DAMAGE=10; //!! what to do with this?
+    static const int DEFAULT_DAMAGE=100; //!! what to do with this?//editt12
 };
 
 

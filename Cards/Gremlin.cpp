@@ -11,8 +11,10 @@ Gremlin::Gremlin(string name): BattleCard(name,DEFAULT_POWER,DEFAULT_LOOT,DEFAUL
 void Gremlin::applyVictory(Player &player) const {
     player.levelUp();
     player.addCoins(m_loot);
+     printWinBattle(player.getName(),m_name);
     }
 
 void Gremlin::applyDefeat(Player &player) const {
+     printLossBattle(player.getName(),m_name);
     player.damage(m_damage);
 }

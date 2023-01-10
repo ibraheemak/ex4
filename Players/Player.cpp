@@ -132,3 +132,8 @@ std::ostream& operator<<(std::ostream& os, const Player& player1)
     printPlayerDetails(os,player1.getName(),player1.getType(),player1.getLevel(),player1.getForce(),player1.getHP(),player1.getCoins());
     return os;
 }
+
+void Player::decreaseForce(int forceToDecrease)
+{
+   m_force-=forceToDecrease;   
+}

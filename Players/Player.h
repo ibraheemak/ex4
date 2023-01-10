@@ -26,7 +26,7 @@ protected:
 public:
     explicit Player(const char* playerName);//constructor
     Player(const Player&)=default;//copy constructor
-    virtual ~Player(){};
+    virtual ~Player()=default;
 
 
     friend std::ostream& operator<<(std::ostream& os, const Player& player1);//printing the player info without changing anything
@@ -45,6 +45,8 @@ public:
     const int getHP() const;//return the current HP
     const int getCoins() const;//return the current coins
     virtual const string getType()const=0;//return the player type
+    void decreaseForce(int forceToDecrease);
+
 
 
 
