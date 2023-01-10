@@ -4,8 +4,8 @@
 #include "BattleCard.h"
 using namespace std;
 
-BattleCard::BattleCard(string name,int power, int loot, int damage)
-: Card(name),m_power(power),m_loot(loot),m_damage(damage){}
+BattleCard::BattleCard(string name,int force, int loot, int damage)
+: Card(name),m_power(force),m_loot(loot),m_damage(damage){}
 
 
 void BattleCard::Encounter(Player &player) const {

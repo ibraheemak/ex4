@@ -1,7 +1,5 @@
 
 #include "Card.h"
-#include <algorithm>
-#include <string>
 using namespace std;
 
 Card::Card(string name)
@@ -13,4 +11,14 @@ Card::Card(string name)
     m_name=name;
 
 }
+
+
+ostream& operator<<(ostream& os, const Card& card)
+{
+    printCardDetails(os,card.m_name);
+    card.printInfo(os);
+    printEndOfCardDetails(os);
+    return os;
+}
+
 // the other two are default because im using string
