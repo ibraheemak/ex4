@@ -8,6 +8,7 @@ using std::ifstream;
 
   Mtmchkin::Mtmchkin(const std::string &fileName)
   {
+    int cardCounter=0;
     printStartGameMessage();
     ifstream file(fileName);
     if(!file)
@@ -20,7 +21,24 @@ using std::ifstream;
     {
       getline(file,type);
       queueCards.push(type);
+      cardCounter++;
     }
+    if(cardCounter<5)
+    {
+      throw DeckFileInvalidSize();
+    }
+    int teamSize;
+    printEnterTeamSizeMessage();
+    cin>>teamSize;
+    while(teamSize<2 || teamSize>6){
+      printInvalidTeamSize();
+      printEnterTeamSizeMessage();
+      cin>>teamSize;
+    }
+    
+    
+
+
 
 
 
