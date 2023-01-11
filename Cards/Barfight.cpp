@@ -4,16 +4,16 @@
 using namespace std;
 
 
-Barfight::Barfight(string name) : Card(name){};
+Barfight::Barfight(): Card(BARFIGHT){};
 
 void Barfight::Encounter(Player &player) const {
-    bool isWarrior=true;//editt12
+    bool isWarrior=true;
     try {
         const Warrior &warrior = dynamic_cast<const Warrior &>(player);
     } catch (bad_cast&){
         player.damage(BARFIGHT_DAMAGE);
-        isWarrior=false;//editt12
+        isWarrior=false;
     }
-    printBarfightMessage(isWarrior);//editt12
+    printBarfightMessage(isWarrior);
 
 }

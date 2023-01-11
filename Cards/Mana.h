@@ -7,10 +7,11 @@
 #include "../Players/Player.h"
 
 using namespace std;
+const string MANA = "Mana";
 
 class Mana: public Card{
 public:
-    explicit Mana(string name);
+    Mana();
     Mana(Mana&)=default;
     ~Mana() override=default;
     void Encounter(Player& player) const override;

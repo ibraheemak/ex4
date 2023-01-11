@@ -1,16 +1,16 @@
-#ifndef CARD_BARDFIGHT_H
-#define CARD_BARDFIGHT_H
+#ifndef CARD_BARFIGHT_H
+#define CARD_BARFIGHT_H
 
 #include <iostream>
 #include <string>
 #include "Card.h"
 #include "../Players/Player.h"
+`using namespace std;
 
-using namespace std;
-
+const string BARFIGHT = "Barfight";
 class Barfight: public Card{
 public:
-    explicit Barfight(string name);
+    Barfight();
     Barfight(Barfight&)=default;
     ~Barfight() override=default;
     void Encounter(Player& player) const override;

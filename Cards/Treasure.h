@@ -7,12 +7,11 @@
 #include "../Players/Player.h"
 
 using namespace std;
+const string TREASURE = "Treasure";
 
 class Treasure: public Card{
 public:
-    explicit Treasure(string name);
-    Treasure(Treasure&)=default;
-    ~Treasure() override=default; //!! why override?
+    Treasure();
     void Encounter(Player& player) const override;
 private:
     static const int TREASURE_COINS=10;

@@ -8,14 +8,11 @@
 #include "BattleCard.h"
 
 using namespace std;
-
+const string WITCH = "Witch";
 class Witch: public BattleCard{
 public:
-    explicit Witch(string name);
-    void applyVictory(Player& player) const override;
+    Witch();
     void applyDefeat(Player& player) const override;
-    Witch(Witch&)= default;  //!! is this how it should be?
-    ~Witch() override = default; //!! also this?
 
 private:
     static const int DEFAULT_POWER=11;

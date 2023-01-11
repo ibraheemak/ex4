@@ -4,15 +4,15 @@
 using namespace std;
 
 
-Well::Well(string name) : Card(name){};
+Well::Well() : Card(WELL){};
 
 void Well::Encounter(Player &player) const {
-    bool isNinja=true;//editt12
+    bool isNinja=true;
     try {
         const Ninja &ninja = dynamic_cast<const Ninja &>(player);
     } catch (bad_cast&){
         player.damage(FALL_DAMAGE);
-        isNinja=false;//editt12
+        isNinja=false;
     }
-    printWellMessage(isNinja);//editt12
+    printWellMessage(isNinja);
 }

@@ -8,8 +8,8 @@ const string MERCHANT = "Merchant"; //!! should we do it like this?
 class Merchant : public Card
 {
 public:
-    Merchant():Card(MERCHANT){};
-    void Encounter(Player& player,ostream& os) const override; //!! should it be with ostream??
+    Merchant();
+    void Encounter(Player& player) const override; //!! should it be with ostream??
 
 private:
     const int HEAL_COST = 5;

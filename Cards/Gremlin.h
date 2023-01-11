@@ -8,14 +8,13 @@
 #include "BattleCard.h"
 
 using namespace std;
+const string GREMLIN = "Gremlin";
 
 class Gremlin:public BattleCard{
 public:
-    explicit Gremlin(string name);
-    void applyVictory(Player& player) const override;
-    void applyDefeat(Player& player) const override;
-    Gremlin(Gremlin&)= default;  //!! is this how it should be?
-    ~Gremlin() override = default; //!! also this?
+    Gremlin();
+    Gremlin(Gremlin&)= default;
+    ~Gremlin() override = default;
 
 private:
     static const int DEFAULT_POWER=5;

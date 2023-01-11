@@ -11,11 +11,10 @@ using namespace std;
 class BattleCard: public Card{
 
 public:
-    BattleCard(string name,int force, int loot, int damage); //!! do i need this with all the params?
+    BattleCard(const string &name,int force, int loot, int damage); //!! do i need this with all the params?
     virtual ~BattleCard()=default; //!!default right?
     void Encounter(Player& player) const override;
-    virtual void applyVictory(Player& player) const {} // is there other way to implement this //!! with ; or {} at the end?
-    virtual void applyDefeat(Player& player) const {} //!! should I only virtualize this?
+    virtual void applyDefeat(Player& player) const; //!! should I only virtualize this?
     void printInfo(ostream& os) const override;
 
 protected:

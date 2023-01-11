@@ -7,12 +7,11 @@
 #include "../Players/Player.h"
 
 using namespace std;
+const string WELL = "Well";
 
 class Well: public Card{
 public:
-    explicit Well(string name);
-    Well(Well&)=default;
-    ~Well() override=default;
+    Well();
     void Encounter(Player& player) const override;
 private:
     static const int FALL_DAMAGE=10;
