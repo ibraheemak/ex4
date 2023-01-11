@@ -2,6 +2,7 @@
 #define EXCEPTION
 
 #include <exception>
+#include <string>
 using namespace std;
  
 
