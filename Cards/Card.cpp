@@ -12,7 +12,11 @@ Card::Card(string name)
 
 }
 
+ void Card::printInfo(ostream& os) const
+ {
+    os<<m_name<<endl;
 
+ }
 ostream& operator<<(ostream& os, const Card& card)
 {
     printCardDetails(os,card.m_name);

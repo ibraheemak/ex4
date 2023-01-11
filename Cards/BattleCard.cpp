@@ -18,6 +18,12 @@ void BattleCard::Encounter(Player &player) const {
     }
 }
 
+void BattleCard::printInfo(ostream& os) const
+{
+    
+    bool isDragon=(m_name=="Dragon");
+    printMonsterDetails(os,m_power,m_damage,m_loot,isDragon);
 
+}
 
 

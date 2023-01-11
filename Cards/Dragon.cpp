@@ -16,5 +16,5 @@ void Dragon::applyVictory(Player &player) const {
 
 void Dragon::applyDefeat(Player &player) const {
     printLossBattle(player.getName(),m_name);
-    player.damage(player.getHP()); //!! getHp is const while damage takes a normal param, is that a problem?
+    player.damage(DEFAULT_DAMAGE); //!! getHp is const while damage takes a normal param, is that a problem?
 }
