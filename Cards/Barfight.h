@@ -1,5 +1,5 @@
-#ifndef CARD_WELL_H
-#define CARD_WELL_H
+#ifndef CARD_BARDFIGHT_H
+#define CARD_BARDFIGHT_H
 
 #include <iostream>
 #include <string>
