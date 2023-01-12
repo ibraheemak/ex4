@@ -1,48 +1,26 @@
 #include "Mtmchkin.h"
-#include <fstream>
-#include "Exception.h"
-using std::ifstream;
-#include <string>
-#include "utilities.h"
-#include <queue>
+#include "helper.h"
+
 
   Mtmchkin::Mtmchkin(const std::string &fileName)
   {
     int cardCounter=0;
     printStartGameMessage();
     ifstream file(fileName);
-    if(!file)
-    {
+    if(!file){
       throw DeckFileNotFound();
     }
-    queue<const string> queueCards;
      string type;
-    while(!file.eof())
-    {
+    while(!file.eof()){
       getline(file,type);
-      queueCards.push(type);
+      readCard(type,cardCounter,m_cards);
       cardCounter++;
     }
-    if(cardCounter<5)
-    {
+    if(cardCounter<5){
       throw DeckFileInvalidSize();
     }
     int teamSize;
-    printEnterTeamSizeMessage();
-    cin>>teamSize;
-    while(teamSize<2 || teamSize>6){
-      printInvalidTeamSize();
-      printEnterTeamSizeMessage();
-      cin>>teamSize;
-    }
-    
-    
-
-
-
-
-
-
-
-
+    entersize(teamSize);
+    readPlayer(m_players,teamSize);
   }
+

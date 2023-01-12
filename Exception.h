@@ -17,8 +17,9 @@ class DeckFileNotFound : public exception
 
  class DeckFileFormatError:public exception
  {
-    private:
+
     int m_line;
+    public:
     DeckFileFormatError(int line) : m_line(line){};
     ~DeckFileFormatError()override=default;
     const char* what() const override
