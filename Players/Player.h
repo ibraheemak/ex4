@@ -45,7 +45,7 @@ public:
     const int& getForce() const;// return the current Force
     const int& getHP() const;//return the current HP
     const int& getCoins() const;//return the current coins
-    virtual const string& getType()const=0;//return the player type
+    virtual const string getType()const=0;//return the player type
     void decreaseForce(int forceToDecrease);
 
 

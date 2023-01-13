@@ -9,7 +9,7 @@ Mana::Mana() : Card(MANA){}
 void Mana::Encounter(Player &player) const {
     bool isHealer=true;
     try {
-         const Healer &healer = dynamic_cast<const Healer &>(player);
+         const auto &healer = dynamic_cast<const Healer &>(player);
     } catch (bad_cast&){
         isHealer=false;
     }
