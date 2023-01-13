@@ -4,7 +4,7 @@
 using namespace std;
 
 
-Barfight::Barfight(): Card(BARFIGHT){};
+Barfight::Barfight(): Card(BARFIGHT){}
 
 void Barfight::Encounter(Player &player) const {
     bool isWarrior=true;

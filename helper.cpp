@@ -96,7 +96,7 @@ void readPlayer(deque<shared_ptr<Player>>& players,int teamSize)
 
 bool checkName(const string& name)
 {
-  for (int i=0;i<name.size();i++)
+  for(int i=0;i<(int)name.size();i++)
   {
     if(!isalpha(name[i]))
     {

@@ -4,7 +4,7 @@
 using namespace std;
 
 
-Well::Well() : Card(WELL){};
+Well::Well() : Card(WELL){}
 
 void Well::Encounter(Player &player) const {
     bool isNinja=true;

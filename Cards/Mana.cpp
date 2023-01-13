@@ -3,7 +3,7 @@
 #include "../Players/Healer.h"
 using namespace std;
 
-Mana::Mana() : Card(MANA){};
+Mana::Mana() : Card(MANA){}
 
 
 void Mana::Encounter(Player &player) const {

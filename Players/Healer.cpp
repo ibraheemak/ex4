@@ -16,4 +16,4 @@ const string Healer::getType()const
     return "Healer";
 }
 
-Healer::Healer(const string playerName) :Player(playerName){};
+Healer::Healer(const string playerName) :Player(playerName){}

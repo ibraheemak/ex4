@@ -1,6 +1,6 @@
 #include "Merchant.h"
 
-    Merchant::Merchant():Card(MERCHANT){};
+    Merchant::Merchant():Card(MERCHANT){}
 
 
 void Merchant::Encounter(Player &player) const {
