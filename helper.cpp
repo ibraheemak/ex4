@@ -40,7 +40,7 @@ void readCard(const string& type,int line,deque<shared_ptr<Card>>& cards)
   else{
     throw DeckFileFormatError(line);
   }
-  cards.push(card);
+  cards.push_back(card);
 }
 
 bool readPlayerType(const string& name,const string &playerType,deque<shared_ptr<Player>>& players)
