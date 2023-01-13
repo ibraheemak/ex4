@@ -24,7 +24,7 @@ protected:
 
 
 public:
-    explicit Player(const string playerName);//constructor
+    explicit Player(string playerName);//constructor
     Player(const Player&)=default;//copy constructor
     virtual ~Player()=default;
 
@@ -41,11 +41,11 @@ public:
     bool pay(int payAmount);// reduce the coins amount that the player has
     virtual int getAttackStrength() const;//retutn the attack strenght (level+force)
     Player& operator=(const Player& player1);// operator =
-    const string getName() const;//return the player name
-    const int getForce() const;// return the current Force
-    const int getHP() const;//return the current HP
-    const int getCoins() const;//return the current coins
-    virtual const string getType()const=0;//return the player type
+    const string& getName() const;//return the player name
+    const int& getForce() const;// return the current Force
+    const int& getHP() const;//return the current HP
+    const int& getCoins() const;//return the current coins
+    virtual const string& getType()const=0;//return the player type
     void decreaseForce(int forceToDecrease);
 
 

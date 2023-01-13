@@ -1,9 +1,11 @@
 #include "Player.h"
+
+#include <utility>
 #include "../utilities.h"
 using namespace std;
 
 
-Player::Player(const string playerName) : m_name(playerName),m_force(DEAFULT_FORCE),m_level(MIN_LEVEL),m_coins(INITIAL_COINS),m_HP(DEAFULT_MAX_HP) {}
+Player::Player(string playerName) : m_name(std::move(playerName)),m_force(DEAFULT_FORCE),m_coins(INITIAL_COINS),m_HP(DEAFULT_MAX_HP),m_level(MIN_LEVEL) {}
 
 
 // CHECK
@@ -72,7 +74,6 @@ void Player::addCoins(int coinsToAdd)
     }
 }
 
-
 bool Player::pay(int payAmount)
 {
     if(payAmount>m_coins)
@@ -106,23 +107,23 @@ Player& Player::operator=(const Player& player1)
 
 }
 
-const string Player::getName() const
+const string& Player::getName() const
 {
     return m_name;
 
 }
 
-const int Player::getForce() const
+const int& Player::getForce() const
 {
     return m_force;
 }
 
-const int Player::getHP() const
+const int& Player::getHP() const
 {
     return m_HP;
 }
 
-const int Player::getCoins() const
+const int& Player::getCoins() const
 {
     return m_coins;
 }
@@ -141,3 +142,4 @@ void Player::decreaseForce(int forceToDecrease)
 bool Player::finishedTheGame() const {
     return (m_level==MAX_LEVEL);
 }
+

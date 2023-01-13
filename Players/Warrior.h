@@ -6,7 +6,7 @@
 class Warrior : public Player
 {
 public:
-explicit Warrior(const string playerName);
+explicit Warrior(const string& playerName);
 int getAttackStrength() const override;
 const string getType()const override;
 };
