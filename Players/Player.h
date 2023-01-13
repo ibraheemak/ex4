@@ -36,6 +36,7 @@ public:
     virtual void heal(int addHeal);//add heal to the player
     void damage(int damageHeal);//reduce heal
     bool isKnockedOut() const;//check if the player lose
+    bool finishedTheGame() const; // checks if the player finished the game
     virtual void addCoins(int coinsToAdd);//add coins to the player
     bool pay(int payAmount);// reduce the coins amount that the player has
     virtual int getAttackStrength() const;//retutn the attack strenght (level+force)

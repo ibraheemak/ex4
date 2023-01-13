@@ -2,7 +2,7 @@
 #include "Card.h"
 using namespace std;
 
-Card::Card(string name)
+Card::Card(const string &name)
 {
     if(name.find(' ')||name.length()>15)
     {

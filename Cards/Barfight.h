@@ -5,7 +5,7 @@
 #include <string>
 #include "Card.h"
 #include "../Players/Player.h"
-`using namespace std;
+using namespace std;
 
 const string BARFIGHT = "Barfight";
 class Barfight: public Card{

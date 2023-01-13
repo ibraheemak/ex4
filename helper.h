@@ -22,10 +22,12 @@ using std::ifstream;
 #include "Players/Warrior.h"
 #include "Players/Ninja.h"
 #include "Players/Healer.h"
-void entersize(int& teamSize);
-void readCard(const string& type,int line,queue<shared_ptr<Card>>& cards);
-bool readPlayerType(const string& name,const string playerType,queue<shared_ptr<Player>>& players);
+#include <memory>
+
+void enterSize(int& teamSize);
+void readCard(const string& type,int line,deque<shared_ptr<Card>>& cards);
+bool readPlayerType(const string& name,const string &playerType,deque<shared_ptr<Player>>& players);
 bool checkName(const string& name);
-void readPlayer(queue<shared_ptr<Player>>& players,int teamSize);
+void readPlayer(deque<shared_ptr<Player>>& players,int teamSize);
 
 #endif

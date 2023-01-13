@@ -1,6 +1,5 @@
-
 #include "helper.h"
-  void entersize(int& teamSize)
+  void enterSize(int& teamSize)
 {
     printEnterTeamSizeMessage();
      cin>>teamSize;
@@ -11,7 +10,7 @@
     }
 }
 
-void readCard(const string& type,int line,queue<shared_ptr<Card>>& cards)
+void readCard(const string& type,int line,deque<shared_ptr<Card>>& cards)
 {
   shared_ptr<Card> card;
   if(type=="Witch"){
@@ -44,7 +43,7 @@ void readCard(const string& type,int line,queue<shared_ptr<Card>>& cards)
   cards.push(card);
 }
 
-bool readPlayerType(const string& name,const string playerType,queue<shared_ptr<Player>>& players)
+bool readPlayerType(const string& name,const string &playerType,deque<shared_ptr<Player>>& players)
 {
   shared_ptr<Player> player;
   if(playerType=="Warrior")
@@ -65,13 +64,13 @@ bool readPlayerType(const string& name,const string playerType,queue<shared_ptr<
   }
   if(checkName(name))
   {
-  players.push(player);
+  players.push_back(player);
   return true;
   }
 return false;
 }
 
-void readPlayer(queue<shared_ptr<Player>>& players,int teamSize)
+void readPlayer(deque<shared_ptr<Player>>& players,int teamSize)
 {
   string playerName,playerType;
   for(int i=0;i<teamSize;i++)

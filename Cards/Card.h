@@ -11,7 +11,7 @@ using namespace std;
 
 class Card {
 public:
-    explicit Card(string name); // got to check for the name applying the rules
+    explicit Card(const string &name); // got to check for the name applying the rules
     Card(const Card&)=default;
 
     virtual void Encounter(Player& player) const=0;//editt12

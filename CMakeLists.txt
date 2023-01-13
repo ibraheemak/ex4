@@ -17,6 +17,9 @@ add_executable(ex4
         Players/Warrior.h
         Exception.h
         Mtmchkin.h
+        Mtmchkin.cpp
+        helper.cpp
+        helper.h
         test.cpp
         utilities.cpp
         utilities.h
@@ -30,6 +33,17 @@ add_executable(ex4
         Cards/Witch.cpp
         Cards/Dragon.h
         Cards/Dragon.cpp
+        Cards/Mana.cpp
+        Cards/Mana.h
+        Cards/Merchant.h
+        Cards/Merchant.cpp
+        Cards/Treasure.cpp
+        Cards/Treasure.h
+        Cards/Well.h
+        Cards/Well.cpp
+        Cards/Barfight.cpp
+        Cards/Barfight.h
+
 
 
 

@@ -137,3 +137,7 @@ void Player::decreaseForce(int forceToDecrease)
 {
    m_force-=forceToDecrease;   
 }
+
+bool Player::finishedTheGame() const {
+    return (m_level==MAX_LEVEL);
+}

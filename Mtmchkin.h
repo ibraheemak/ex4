@@ -16,7 +16,7 @@ using std::ifstream;
 #include "Cards/Gremlin.h"
 #include "Cards/Dragon.h"
 #include "Cards/Barfight.h"
-
+#include <memory> //!! I added this for me
 
 class Mtmchkin{
 
@@ -65,9 +65,14 @@ public:
     int getNumberOfRounds() const;
 
 private:
-queue<shared_ptr<Card>> m_cards;
-queue<shared_ptr<Player>> m_players;
-
+    deque<shared_ptr<Card>> m_cards;
+    deque<shared_ptr<Player>> m_players;
+    int m_numOfRounds; // add it to constructor
+    // int m_teamSize;
+    vector<shared_ptr<Player>> m_leaderBoard;
+    int m_numOfWinners;
+    int m_numOfLosers;
+    int m_numOfAllPlayer;
 
 };
 

@@ -1,6 +1,6 @@
 # ninja log v5
-4	395	6949577933190112	CMakeFiles/ex4.dir/Players/Ninja.cpp.obj	5a09347e4e61e254
-0	397	6949577933212230	CMakeFiles/ex4.dir/Players/Healer.cpp.obj	8c7f8a43048d4e3c
-11	409	6949577933346888	CMakeFiles/ex4.dir/Players/Warrior.cpp.obj	6a36e2a0a5bbdda7
+7	383	6953348747617869	CMakeFiles/ex4.dir/Players/Ninja.cpp.obj	5a09347e4e61e254
+3	391	6953348747710215	CMakeFiles/ex4.dir/Players/Healer.cpp.obj	8c7f8a43048d4e3c
 8	428	6949577933542650	CMakeFiles/ex4.dir/Players/Player.cpp.obj	fdd4204fc495e4e0
+15	385	6953348747617869	CMakeFiles/ex4.dir/Players/Warrior.cpp.obj	6a36e2a0a5bbdda7
 19	448	6949577933742711	CMakeFiles/ex4.dir/utilities.cpp.obj	1d490c26bd3a5ef3
