@@ -13,7 +13,7 @@ public:
     Barfight();
     Barfight(Barfight&)=default;
     ~Barfight() override=default;
-    void Encounter(Player& player) const override;
+    void Encounter(Player* player) const override;
 private:
     static const int BARFIGHT_DAMAGE=10;
 };

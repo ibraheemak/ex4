@@ -6,19 +6,14 @@ using namespace std;
 Mana::Mana() : Card(MANA){}
 
 
-void Mana::Encounter(Player &player) const {
+void Mana::Encounter(Player *player) const {
     bool isHealer=true;
-    try {
-         const auto &healer = dynamic_cast<const Healer &>(player);
-    } catch (bad_cast&){
+    Healer* healer = dynamic_cast< Healer*>(player);
+    if(healer== nullptr){
         isHealer=false;
     }
-    if(isHealer)
-    {
-        player.heal(MANA_HEAL);
+    else {
+        player->heal(MANA_HEAL);
     }
     printManaMessage(isHealer);
-   
-
-
 }

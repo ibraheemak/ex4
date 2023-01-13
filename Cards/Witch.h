@@ -12,7 +12,7 @@ const string WITCH = "Witch";
 class Witch: public BattleCard{
 public:
     Witch();
-    void applyDefeat(Player& player) const override;
+    void applyDefeat(Player* player) const override;
 
 private:
     static const int DEFAULT_POWER=11;

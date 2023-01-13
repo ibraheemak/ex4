@@ -12,7 +12,7 @@ const string WELL = "Well";
 class Well: public Card{
 public:
     Well();
-    void Encounter(Player& player) const override;
+    void Encounter(Player* player) const override;
 private:
     static const int FALL_DAMAGE=10;
 };

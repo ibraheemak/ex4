@@ -14,7 +14,7 @@ public:
     Mana();
     Mana(Mana&)=default;
     ~Mana() override=default;
-    void Encounter(Player& player) const override;
+    void Encounter(Player* player) const override;
 private:
     static const int MANA_HEAL=10;
 };

@@ -14,7 +14,7 @@ public:
     explicit Card(const string &name); // got to check for the name applying the rules
     Card(const Card&)=default;
 
-    virtual void Encounter(Player& player) const=0;//editt12
+    virtual void Encounter(Player* player) const=0;//editt12
 
     Card& operator=(const Card& anotherCard)=default;
     virtual ~Card() = default; //use default?

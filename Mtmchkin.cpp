@@ -39,7 +39,7 @@ void Mtmchkin::playRound() {
         shared_ptr<Player> curPlayer= m_players.front(); //!! does this work?
         if(  !(curPlayer->isKnockedOut()) && !(curPlayer->finishedTheGame()) ){
             printTurnStartMessage(curPlayer->getName());
-            m_cards.front()->Encounter(*curPlayer);
+            m_cards.front()->Encounter(&(*curPlayer));
             if(curPlayer->finishedTheGame()){
                 // m_leaderBoard.at(m_numOfWinners)=curPlayer;
                 m_leaderBoard.insert(m_leaderBoard.begin()+m_numOfWinners,curPlayer);

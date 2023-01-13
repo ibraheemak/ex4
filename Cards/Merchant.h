@@ -9,7 +9,7 @@ class Merchant : public Card
 {
 public:
     Merchant();
-    void Encounter(Player& player) const override; //!! should it be with ostream??
+    void Encounter(Player* player) const override; //!! should it be with ostream??
 
 private:
     const int HEAL_COST = 5;

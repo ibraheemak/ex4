@@ -12,7 +12,7 @@ const string TREASURE = "Treasure";
 class Treasure: public Card{
 public:
     Treasure();
-    void Encounter(Player& player) const override;
+    void Encounter(Player* player) const override;
 private:
     static const int TREASURE_COINS=10;
 };

@@ -3,11 +3,11 @@
     Merchant::Merchant():Card(MERCHANT){}
 
 
-void Merchant::Encounter(Player &player) const {
+void Merchant::Encounter(Player *player) const {
     string str;
     int potion=NO_POTION;
     int price = NOTHING;
-    printMerchantInitialMessageForInteractiveEncounter(cout, player.getName(), player.getCoins());
+    printMerchantInitialMessageForInteractiveEncounter(cout, player->getName(), player->getCoins());
     while (potion != NOTHING && potion != HEALING && potion != BUFFING)
     {
         getline(cin, str);
@@ -31,22 +31,22 @@ void Merchant::Encounter(Player &player) const {
     }
     if (potion == HEALING) {
 
-        if (!player.pay(HEAL_COST)) {
+        if (!player->pay(HEAL_COST)) {
             printMerchantInsufficientCoins(cout);
-            printMerchantSummary(cout, player.getName(), potion, price);
+            printMerchantSummary(cout, player->getName(), potion, price);
             return;
         }
         price = HEAL_COST;
-        player.heal(PROFIT);
+        player->heal(PROFIT);
     }
     if (potion == BUFFING) {
-        if (!player.pay(BUFF_COST)) {
+        if (!player->pay(BUFF_COST)) {
             printMerchantInsufficientCoins(cout);
-            printMerchantSummary(cout, player.getName(), potion, price);
+            printMerchantSummary(cout, player->getName(), potion, price);
             return;
         }
         price = BUFF_COST;
-        player.buff(PROFIT);
+        player->buff(PROFIT);
     }
-    printMerchantSummary(cout, player.getName(), potion, price);
+    printMerchantSummary(cout, player->getName(), potion, price);
 }

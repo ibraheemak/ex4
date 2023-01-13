@@ -13,8 +13,8 @@ class BattleCard: public Card{
 public:
     BattleCard(const string &name,int force, int loot, int damage); //!! do i need this with all the params?
     virtual ~BattleCard()=default; //!!default right?
-    void Encounter(Player& player) const override;
-    virtual void applyDefeat(Player& player) const; //!! should I only virtualize this?
+    void Encounter(Player* player) const override;
+    virtual void applyDefeat(Player* player) const; //!! should I only virtualize this?
     void printInfo(ostream& os) const override;
 
 protected:
