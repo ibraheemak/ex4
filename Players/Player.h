@@ -24,7 +24,7 @@ protected:
 
 
 public:
-    explicit Player(string playerName);//constructor
+    explicit Player(const string& playerName);//constructor
     Player(const Player&)=default;//copy constructor
     virtual ~Player()=default;
 

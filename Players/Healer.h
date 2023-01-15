@@ -6,7 +6,7 @@
 class Healer : public Player
 {
 public:
-explicit Healer(const string playerName);
+explicit Healer(const string& playerName);
 void heal(int addHeal) override;//add heal to the player
 const string getType()const override;
 

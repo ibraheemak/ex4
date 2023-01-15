@@ -6,7 +6,7 @@
 class Ninja : public Player
 {
 public:
-explicit Ninja(string playerName);
+explicit Ninja(const string& playerName);
 void addCoins(int coinsToAdd) override;//add coins to the player
 const string getType()const override;
 };

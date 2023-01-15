@@ -11,4 +11,4 @@ const string Ninja::getType()const
 {
     return "Ninja";
 }
-Ninja::Ninja(const string playerName) :Player(playerName){}
+Ninja::Ninja(const string& playerName) :Player(playerName){}

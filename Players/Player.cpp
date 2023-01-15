@@ -5,7 +5,7 @@
 using namespace std;
 
 
-Player::Player(string playerName) : m_name(std::move(playerName)),m_force(DEAFULT_FORCE),m_coins(INITIAL_COINS),m_HP(DEAFULT_MAX_HP),m_level(MIN_LEVEL) {}
+Player::Player(const string& playerName) : m_name(std::move(playerName)),m_force(DEAFULT_FORCE),m_coins(INITIAL_COINS),m_HP(DEAFULT_MAX_HP),m_level(MIN_LEVEL) {}
 
 
 // CHECK
