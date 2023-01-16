@@ -17,11 +17,11 @@ using std::ifstream;
 #include "Cards/Dragon.h"
 #include "Cards/Barfight.h"
 #include <memory> //!! I added this for me
-
+#include <vector>
 class Mtmchkin{
 
 public:
-    
+
     /*
     * C'tor of Mtmchkin class
     *
@@ -30,7 +30,7 @@ public:
     *      A new instance of Mtmchkin.
     */
     explicit Mtmchkin(const std::string &fileName);
-    
+
     /*
     * Play the next Round of the game - according to the instruction in the exercise document.
     *
@@ -38,7 +38,7 @@ public:
     *      void
     */
     void playRound();
-    
+
     /*
     * Prints the leaderBoard of the game at a given stage of the game - according to the instruction in the exercise document.
     *
@@ -46,7 +46,7 @@ public:
     *      void
     */
     void printLeaderBoard() const;
-    
+
     /*
     *  Checks if the game ended:
     *
@@ -55,8 +55,8 @@ public:
     *          False otherwise
     */
     bool isGameOver() const;
-    
-	/*
+
+    /*
     *  Returns the number of rounds played.
     *
     *  @return
@@ -65,7 +65,8 @@ public:
     int getNumberOfRounds() const;
 
 private:
-    deque<shared_ptr<Card>> m_cards;
+    void readAux(const string& type,int line);
+    std::vector<unique_ptr<Card>> m_cards;
     deque<shared_ptr<Player>> m_players;
     int m_numOfRounds; // add it to constructor
     // int m_teamSize;

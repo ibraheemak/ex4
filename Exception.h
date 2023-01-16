@@ -4,37 +4,38 @@
 #include <exception>
 #include <string>
 using namespace std;
- 
+
+const string  EXEPTION_ERROR_MESSAGE= "Deck File Error: File format error in line ";
 
 class DeckFileNotFound : public exception
 {
-    public:
+public:
     const char* what() const noexcept override
     {
         return "Deck File Error: File not found";
     }
 };
 
- class DeckFileFormatError:public exception
- {
+class DeckFileFormatError:public exception
+{
 
-    int m_line;
-    public:
-    DeckFileFormatError(int line) : m_line(line){};
-    ~DeckFileFormatError()override=default;
+    string m_exeptionMessage;
+public:
+    DeckFileFormatError(int line) : m_exeptionMessage(EXEPTION_ERROR_MESSAGE+to_string(line+1)) {}
+    virtual ~DeckFileFormatError()override = default;
     const char* what() const noexcept override
     {
-        return ("Deck File Error: File format error in line "+to_string(m_line)).c_str();
+        return (m_exeptionMessage).c_str();
     }
- };
+};
 
 class DeckFileInvalidSize:public exception
 {
 public:
-const char* what() const noexcept override
-{
-return "Deck File Error: Deck size is invalid";
-}
+    const char* what() const noexcept override
+    {
+        return "Deck File Error: Deck size is invalid";
+    }
 };
 
 

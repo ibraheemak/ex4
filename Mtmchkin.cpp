@@ -3,34 +3,78 @@
 #include "helper.h"
 
 
-  Mtmchkin::Mtmchkin(const std::string &fileName)
-  {
+void Mtmchkin::readAux(const string& type,int line)
+{
+    cout<<type<<endl;
+    if(type=="Vampire"){
+        m_cards.push_back(std::move(unique_ptr<Card>(new Witch)));
+    }
+    else if(type=="Pitfall"){
+        m_cards.push_back(std::move(unique_ptr<Card>(new Well)));
+    }
+    else if(type=="Treasure"){
+        m_cards.push_back(std::move(unique_ptr<Card>(new Treasure)));
+    }
+    else if(type=="Merchant"){
+        m_cards.push_back(std::move(unique_ptr<Card>(new Merchant)));
+    }
+    else if(type=="Fairy"){
+        m_cards.push_back(std::move(unique_ptr<Card>(new Mana)));
+    }
+    else if(type=="Goblin"){
+        m_cards.push_back(std::move(unique_ptr<Card>(new Gremlin)));
+    }
+    else if(type=="Dragon") {
+        cout<<"successful push for Dragon"<<endl;
+        cout<<"successful push for Dragon .1"<<endl;
+        try {
+            m_cards.push_back(std::move(unique_ptr<Card>(new Dragon)));
+        }
+        catch(std::exception &e){
+            cout<<e.what()<<endl;
+            cout<<"successful push for Dragon .12"<<endl;
+        }
+        cout<<"successful push for Dragon .2"<<endl;
+    }
+    else if(type=="Barfight"){
+        m_cards.push_back(std::move(unique_ptr<Card>(new Barfight)));
+    }
+    else{
+        throw DeckFileFormatError(line);
+    }
+    // cards.push_back(card);
+    cout<<"successful push"<<endl;
+}
+
+Mtmchkin::Mtmchkin(const std::string &fileName)
+{
     int cardCounter=0;
     printStartGameMessage();
     ifstream file(fileName);
-    if(!file){
-      throw DeckFileNotFound();
+    if(!file.is_open()){
+        throw DeckFileNotFound();
     }
-     string type;
+    string type;
     while(!file.eof()){
-      getline(file,type);
-      readCard(type,cardCounter,m_cards);
-      cardCounter++;
+        getline(file,type);
+        cout<<type<<endl;
+        readAux(type,cardCounter);
+        cardCounter++;
     }
     if(cardCounter<5){
-      throw DeckFileInvalidSize();
+        throw DeckFileInvalidSize();
     }
     int teamSize;
     enterSize(teamSize);
     readPlayer(m_players,teamSize);
-      m_numOfRounds=0;
-      m_numOfWinners=0;
-      m_numOfLosers=0;
-      m_numOfAllPlayer=(int)m_players.size();
-      //!! m_leaderBoard; should we do anything here?
-  }
+    m_numOfRounds=0;
+    m_numOfWinners=0;
+    m_numOfLosers=0;
+    m_numOfAllPlayer=(int)m_players.size();
+    //!! m_leaderBoard; should we do anything here?
+}
 
-void Mtmchkin::playRound() {
+void Mtmchkin::playRound() {}/*{
     m_leaderBoard.resize(m_numOfAllPlayer); //!! like this?
     m_numOfRounds++;
     int numOfPlayerWhoPlayed=0; // who played this cur round
@@ -50,7 +94,7 @@ void Mtmchkin::playRound() {
                 m_leaderBoard.insert(m_leaderBoard.begin()+m_numOfWinners+m_numOfLosers,curPlayer);
                 m_numOfLosers++;
             }
-            m_cards.push_back(m_cards.front());
+            m_cards.push_back(std::move(m_cards.front()));
             m_cards.pop_front();
             numOfPlayerWhoPlayed++;
         }
@@ -60,7 +104,7 @@ void Mtmchkin::playRound() {
     if(isGameOver()){
         printGameEndMessage();
     }
-}
+}*/
 
 void Mtmchkin::printLeaderBoard() const{
     printLeaderBoardStartMessage();
@@ -78,6 +122,7 @@ void Mtmchkin::printLeaderBoard() const{
     for(int i=0;i<m_numOfLosers;i++){
         printPlayerLeaderBoard(leaderboardRank+1,*m_leaderBoard.at(leaderboardRank+i));
     }
+    // printf("\n");
 }
 
 

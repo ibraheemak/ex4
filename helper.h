@@ -25,7 +25,7 @@ using std::ifstream;
 #include <memory>
 
 void enterSize(int& teamSize);
-void readCard(const string& type,int line,deque<shared_ptr<Card>>& cards);
+void readCard(const string& type,int line,deque<unique_ptr<Card>>& cards);
 bool readPlayerType(const string& name,const string &playerType,deque<shared_ptr<Player>>& players);
 bool checkName(const string& name);
 void readPlayer(deque<shared_ptr<Player>>& players,int teamSize);

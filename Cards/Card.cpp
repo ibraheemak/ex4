@@ -4,12 +4,7 @@ using namespace std;
 
 Card::Card(const string &name)
 {
-    if(name.find(' ')||name.length()>15)
-    {
-        throw exception(); //!! throw a proper exception
-    } //!! check if its only letters
     m_name=name;
-
 }
 
  void Card::printInfo(ostream& os) const
