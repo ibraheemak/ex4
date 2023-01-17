@@ -1,13 +1,16 @@
 #ifndef MTMCHKIN_H_
 #define MTMCHKIN_H_
 #include "Players/Player.h"
+#include "Players/Warrior.h"
+#include "Players/Ninja.h"
+#include "Players/Healer.h"
 #include "Cards/Card.h"
 #include <fstream>
 #include "Exception.h"
 using std::ifstream;
 #include <string>
 #include "utilities.h"
-#include <queue>
+#include <deque>
 #include "Cards/Witch.h"
 #include "Cards/Well.h"
 #include "Cards/Treasure.h"
@@ -65,12 +68,16 @@ public:
     int getNumberOfRounds() const;
 
 private:
-    void readAux(const string& type,int line);
-    std::vector<unique_ptr<Card>> m_cards;
-    deque<shared_ptr<Player>> m_players;
+    void readCardAux(const string& type,int line);
+    void readPlayerAux(int teamSize);
+    bool readPlayerType(const string& name,const string &playerType);
+    bool checkName(const string& name);
+    void enterSize(int& teamSize);
+    deque<unique_ptr<Card>> m_cards;
+    deque<unique_ptr<Player>> m_players;
     int m_numOfRounds; // add it to constructor
     // int m_teamSize;
-    vector<shared_ptr<Player>> m_leaderBoard;
+    deque<unique_ptr<Player>> m_leaderBoard;
     int m_numOfWinners;
     int m_numOfLosers;
     int m_numOfAllPlayer;
