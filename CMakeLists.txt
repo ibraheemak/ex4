@@ -20,7 +20,6 @@ add_executable(ex4
         Mtmchkin.cpp
         helper.cpp
         helper.h
-        test.cpp
         utilities.cpp
         utilities.h
         Cards/Card.h

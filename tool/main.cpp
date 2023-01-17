@@ -56,12 +56,12 @@ bool compareFiles(const string &filename1, const string &filename2)
     string line1,line2;
     fstream file1(filename1),file2(filename2);
     if( !file2){
-        cerr<<"Error opening file 2"<<std::endl;
-        return false;
+         cerr<<"Error opening file 2"<<std::endl;
+         return false;
     }
-    if(!file1 ){
-        cerr<<"Error opening file 1"<<std::endl;
-        return false;
+	if(!file1 ){
+         cerr<<"Error opening file 1"<<std::endl;
+         return false;
     }
     while(!file1.eof()){ //read file until you reach the end
         getline(file1,line1);
@@ -95,7 +95,7 @@ bool GeneralGameSimulationTest(const string &tempDeckFilename, string input, str
     }
 
     bool res = compareFiles(tempDeckFilename+"out.txt", expectedOutputFileName);
-    outfile.close();
+	outfile.close();
     std::cin.rdbuf(cinbuf);
     std::cout.rdbuf(coutbuf);
     deleteTextFile(tempDeckFilename+".txt");
@@ -120,7 +120,7 @@ void run_test(std::function<bool()> test, std::string test_name)
 
 bool cardsPrintsTest()
 {
-
+    
     Barfight junta;
     Dragon mushu;
     Mana mana;
@@ -129,21 +129,21 @@ bool cardsPrintsTest()
     Well well;
     Treasure factor;
     Witch witch;
-    cout << junta << std::endl << mushu << std::endl << mana
-         << std::endl << gremlin  << std::endl << pizzaHut
-         << std::endl << well  << std::endl << factor
-         << std::endl << witch;
+    cout << junta << std::endl << mushu << std::endl << mana   
+                    << std::endl << gremlin  << std::endl << pizzaHut
+                    << std::endl << well  << std::endl << factor
+                    << std::endl << witch;
     return true;
 }
 
 bool playersPrintsTest()
 {
-
+    
     Ninja player1("Itay");
     Warrior player2("Efrat");
     Healer player3("Jimmy");
-    cout << player1 << std::endl << player2 << std::endl << player3
-         << std::endl;
+    cout << player1 << std::endl << player2 << std::endl << player3   
+                    << std::endl;
     return true;
 }
 
@@ -161,7 +161,7 @@ bool testCard()
     for(unique_ptr<Card>& card : cards){
         cout << *card;
     }
-    cards.erase(cards.begin(),cards.end());
+	cards.erase(cards.begin(),cards.end());
     return true;
 }
 
@@ -270,7 +270,7 @@ bool badSizeTest()
     string input("4\nBarbieGirl Healer\nInABarbieWorld Ninja\nMadeOfPlastic Ninja\nITSFANTASTIC Healer");
     string deck("Mana");
     string expectedOutputFilename("notneeded.txt");
-    bool flag= false;
+	bool flag= false;
     try{
         Mtmchkin("inputs/empty.txt");
     }
@@ -336,14 +336,14 @@ bool badFormatStartTest()
 /* ---------------------------------------------------------------------------------------------- */
 // --------------------------------       Main function          ------------------------------
 
-int main(){
+int main(){/*
     const int MAX_NUMBER_OF_ROUNDS = 100;
     Mtmchkin game("deck.txt");
     while(!game.isGameOver() && game.getNumberOfRounds() < MAX_NUMBER_OF_ROUNDS){
         game.playRound();
     }
     game.printLeaderBoard();
-    /*
+    */
 	run_test(cardsPrintsTest,"cardsPrintsTest");
 	run_test(playersPrintsTest,"playersPrintsTest");
 	run_test(testCard,"Deck creation test");
@@ -359,5 +359,5 @@ int main(){
     run_test(allTenTest,"All reach lvl 10 test");
     run_test(badPlayerInputTest,"Bad player input test");
     return 0;
-     */
+     
 }

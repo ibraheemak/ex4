@@ -3,7 +3,7 @@
 
 void Mtmchkin::readCardAux(const string& type,int line)
 {
-    cout<<type<<endl;
+    // cout<<type<<endl;
     if(type=="Witch"){ //Vampire
         m_cards.push_back(std::move(unique_ptr<Card>(new Witch)));
     }
@@ -23,6 +23,8 @@ void Mtmchkin::readCardAux(const string& type,int line)
         m_cards.push_back(std::move(unique_ptr<Card>(new Gremlin)));
     }
     else if(type=="Dragon") {
+        m_cards.push_back(std::move(unique_ptr<Card>(new Dragon)));
+        /*
         cout<<"successful push for Dragon"<<endl;
         cout<<"successful push for Dragon .1"<<endl;
         try {
@@ -33,6 +35,7 @@ void Mtmchkin::readCardAux(const string& type,int line)
             cout<<"successful push for Dragon .12"<<endl;
         }
         cout<<"successful push for Dragon .2"<<endl;
+        */
     }
     else if(type=="Barfight"){
         m_cards.push_back(std::move(unique_ptr<Card>(new Barfight)));
@@ -41,7 +44,7 @@ void Mtmchkin::readCardAux(const string& type,int line)
         throw DeckFileFormatError(line); // redefine it with param (int& line)
     }
     // cards.push_back(card);
-    cout<<"successful push"<<endl;
+    // cout<<"successful push"<<endl;
 }
 
 void Mtmchkin::readPlayerAux(int teamSize){
@@ -79,12 +82,12 @@ bool Mtmchkin::readPlayerType(const string& name,const string &playerType)
     }
     else if(playerType=="Ninja") //Rogue
     {
-       // m_players.push_back(std::move(unique_ptr<Player>(new Ninja(name))));
+        // m_players.push_back(std::move(unique_ptr<Player>(new Ninja(name))));
         m_players.push_back(shared_ptr<Player>(new Ninja(name)));
     }
     else if(playerType=="Healer") //Wizard
     {
-       // m_players.push_back(std::move(unique_ptr<Player>(new Healer(name))));
+        // m_players.push_back(std::move(unique_ptr<Player>(new Healer(name))));
         m_players.push_back(shared_ptr<Player>(new Healer(name)));
     }
     else
@@ -120,7 +123,7 @@ void Mtmchkin::enterSize(int& teamSize)
         printEnterTeamSizeMessage();
         cin>>teamSize;
     }
-    cout<<teamSize<<endl;
+    // cout<<teamSize<<endl;
 }
 ///////////////////////////////////////////////////////////
 Mtmchkin::Mtmchkin(const std::string &fileName)
@@ -134,7 +137,7 @@ Mtmchkin::Mtmchkin(const std::string &fileName)
     string type;
     while(!file.eof()){
         getline(file,type);
-        cout<<type<<endl;
+        // cout<<type<<endl;
         readCardAux(type,cardCounter);
         cardCounter++;
     }
@@ -144,7 +147,7 @@ Mtmchkin::Mtmchkin(const std::string &fileName)
     int teamSize;
     enterSize(teamSize);
     readPlayerAux(teamSize);
-    cout<<"finished"<<endl;
+    // cout<<"finished"<<endl;
     m_numOfRounds=0;
     m_numOfWinners=0;
     m_numOfLosers=0;
@@ -170,7 +173,7 @@ void Mtmchkin::playRound(){
             if(m_players.front()->isKnockedOut()){
                 // m_leaderBoard.at(m_numOfAllPlayer-1-m_numOfLosers)=curPlayer;
                 m_losersLeaderBoard.push_back(m_players.front());
-               //  m_leaderBoard.insert(m_leaderBoard.begin()+m_numOfWinners+m_numOfLosers,m_players.front());
+                //  m_leaderBoard.insert(m_leaderBoard.begin()+m_numOfWinners+m_numOfLosers,m_players.front());
                 m_numOfLosers++;
             }
             m_cards.push_back(std::move(m_cards.front()));

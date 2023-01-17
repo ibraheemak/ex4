@@ -8,9 +8,9 @@ void Merchant::Encounter(Player *player) const {
     int potion=NO_POTION;
     int price = NOTHING;
     printMerchantInitialMessageForInteractiveEncounter(cout, player->getName(), player->getCoins());
-    while (potion != NOTHING && potion != HEALING && potion != BUFFING)
+    do
     {
-        getline(cin, str);
+        getline(std::cin, str);
         try
         {
             potion = stoi(str);
@@ -26,9 +26,11 @@ void Merchant::Encounter(Player *player) const {
 
         if(potion>BUFFING||potion<NOTHING)
         {
+
             printInvalidInput();
         }
-    }
+    }while (potion != NOTHING && potion != HEALING && potion != BUFFING);
+
     if (potion == HEALING) {
 
         if (!player->pay(HEAL_COST)) {
