@@ -21,7 +21,7 @@ class DeckFileFormatError:public exception
 
     string m_exeptionMessage;
 public:
-    DeckFileFormatError(int line) : m_exeptionMessage(EXEPTION_ERROR_MESSAGE+to_string(line+1)) {}
+    explicit DeckFileFormatError(int line) : m_exeptionMessage(EXEPTION_ERROR_MESSAGE+to_string(line+1)) {}
     virtual ~DeckFileFormatError()override = default;
     const char* what() const noexcept override
     {

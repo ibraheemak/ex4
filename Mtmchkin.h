@@ -74,10 +74,11 @@ private:
     bool checkName(const string& name);
     void enterSize(int& teamSize);
     deque<unique_ptr<Card>> m_cards;
-    deque<unique_ptr<Player>> m_players;
+    deque<shared_ptr<Player>> m_players;
     int m_numOfRounds; // add it to constructor
     // int m_teamSize;
-    deque<unique_ptr<Player>> m_leaderBoard;
+    deque<shared_ptr<Player>> m_winnersLeaderBoard;
+    deque<shared_ptr<Player>> m_losersLeaderBoard;
     int m_numOfWinners;
     int m_numOfLosers;
     int m_numOfAllPlayer;

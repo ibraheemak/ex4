@@ -1,15 +1,13 @@
 #include "iostream"
 #include "Mtmchkin.h"
-#include "helper.h"
 
-
-void Mtmchkin::readAux(const string& type,int line)
+void Mtmchkin::readCardAux(const string& type,int line)
 {
     cout<<type<<endl;
-    if(type=="Vampire"){
+    if(type=="Witch"){ //Vampire
         m_cards.push_back(std::move(unique_ptr<Card>(new Witch)));
     }
-    else if(type=="Pitfall"){
+    else if(type=="Well"){ //Pitfall
         m_cards.push_back(std::move(unique_ptr<Card>(new Well)));
     }
     else if(type=="Treasure"){
@@ -18,10 +16,10 @@ void Mtmchkin::readAux(const string& type,int line)
     else if(type=="Merchant"){
         m_cards.push_back(std::move(unique_ptr<Card>(new Merchant)));
     }
-    else if(type=="Fairy"){
+    else if(type=="Mana"){ //Fairy
         m_cards.push_back(std::move(unique_ptr<Card>(new Mana)));
     }
-    else if(type=="Goblin"){
+    else if(type=="Gremlin"){ //Goblin
         m_cards.push_back(std::move(unique_ptr<Card>(new Gremlin)));
     }
     else if(type=="Dragon") {
@@ -40,12 +38,91 @@ void Mtmchkin::readAux(const string& type,int line)
         m_cards.push_back(std::move(unique_ptr<Card>(new Barfight)));
     }
     else{
-        throw DeckFileFormatError(line);
+        throw DeckFileFormatError(line); // redefine it with param (int& line)
     }
     // cards.push_back(card);
     cout<<"successful push"<<endl;
 }
 
+void Mtmchkin::readPlayerAux(int teamSize){
+    string playerName,playerType;
+    for(int i=0;i<teamSize;i++)
+    {
+        printInsertPlayerMessage();
+        cin>>playerName;
+        cin>>playerType;
+        while (!checkName(playerName)||!readPlayerType(playerName,playerType))
+        {
+            if(!checkName(playerName))
+            {
+                printInvalidName();
+            }
+            else{
+                printInvalidClass();
+            }
+            cin>>playerName;
+            cin>>playerType;
+        }
+    }
+
+}
+
+bool Mtmchkin::readPlayerType(const string& name,const string &playerType)
+{
+    if(!checkName(name)){
+        return false;
+    }
+    if(playerType=="Warrior") //Fighter
+    {
+        // m_players.push_back(std::move(unique_ptr<Player>(new Warrior(name))));
+        m_players.push_back(shared_ptr<Player>(new Warrior(name)));
+    }
+    else if(playerType=="Ninja") //Rogue
+    {
+       // m_players.push_back(std::move(unique_ptr<Player>(new Ninja(name))));
+        m_players.push_back(shared_ptr<Player>(new Ninja(name)));
+    }
+    else if(playerType=="Healer") //Wizard
+    {
+       // m_players.push_back(std::move(unique_ptr<Player>(new Healer(name))));
+        m_players.push_back(shared_ptr<Player>(new Healer(name)));
+    }
+    else
+    {
+        return false;
+    }
+    return true;
+}
+
+bool Mtmchkin::checkName(const string& name)
+{
+    for(int i=0;i<(int)name.size();i++)
+    {
+        if(!isalpha(name[i]))
+        {
+            return false;
+        }
+    }
+    if(name.size()>15)
+    {
+        return false;
+    }
+    return true;
+
+}
+
+void Mtmchkin::enterSize(int& teamSize)
+{
+    printEnterTeamSizeMessage();
+    cin>>teamSize;
+    while(teamSize<2 || teamSize>6){
+        printInvalidTeamSize();
+        printEnterTeamSizeMessage();
+        cin>>teamSize;
+    }
+    cout<<teamSize<<endl;
+}
+///////////////////////////////////////////////////////////
 Mtmchkin::Mtmchkin(const std::string &fileName)
 {
     int cardCounter=0;
@@ -58,7 +135,7 @@ Mtmchkin::Mtmchkin(const std::string &fileName)
     while(!file.eof()){
         getline(file,type);
         cout<<type<<endl;
-        readAux(type,cardCounter);
+        readCardAux(type,cardCounter);
         cardCounter++;
     }
     if(cardCounter<5){
@@ -66,7 +143,8 @@ Mtmchkin::Mtmchkin(const std::string &fileName)
     }
     int teamSize;
     enterSize(teamSize);
-    readPlayer(m_players,teamSize);
+    readPlayerAux(teamSize);
+    cout<<"finished"<<endl;
     m_numOfRounds=0;
     m_numOfWinners=0;
     m_numOfLosers=0;
@@ -74,24 +152,25 @@ Mtmchkin::Mtmchkin(const std::string &fileName)
     //!! m_leaderBoard; should we do anything here?
 }
 
-void Mtmchkin::playRound() {}/*{
-    m_leaderBoard.resize(m_numOfAllPlayer); //!! like this?
+void Mtmchkin::playRound(){
+    // m_leaderBoard.resize(m_numOfAllPlayer); //!! like this?
     m_numOfRounds++;
     int numOfPlayerWhoPlayed=0; // who played this cur round
     printRoundStartMessage(m_numOfRounds);
     while(numOfPlayerWhoPlayed<m_numOfAllPlayer){
-        shared_ptr<Player> curPlayer= m_players.front(); //!! does this work?
-        if(  !(curPlayer->isKnockedOut()) && !(curPlayer->finishedTheGame()) ){
-            printTurnStartMessage(curPlayer->getName());
-            m_cards.front()->Encounter(&(*curPlayer));
-            if(curPlayer->finishedTheGame()){
+        if(  !(m_players.front()->isKnockedOut()) && !(m_players.front()->finishedTheGame()) ){
+            printTurnStartMessage(m_players.front()->getName());
+            m_cards.front()->Encounter(&(*m_players.front())); //!! is this okay?
+            if(m_players.front()->finishedTheGame()){
                 // m_leaderBoard.at(m_numOfWinners)=curPlayer;
-                m_leaderBoard.insert(m_leaderBoard.begin()+m_numOfWinners,curPlayer);
+                m_winnersLeaderBoard.push_back(m_players.front());
+                // m_leaderBoard.insert(m_leaderBoard.begin()+m_numOfWinners,m_players.front());
                 m_numOfWinners++;
             }
-            if(curPlayer->isKnockedOut()){
+            if(m_players.front()->isKnockedOut()){
                 // m_leaderBoard.at(m_numOfAllPlayer-1-m_numOfLosers)=curPlayer;
-                m_leaderBoard.insert(m_leaderBoard.begin()+m_numOfWinners+m_numOfLosers,curPlayer);
+                m_losersLeaderBoard.push_back(m_players.front());
+               //  m_leaderBoard.insert(m_leaderBoard.begin()+m_numOfWinners+m_numOfLosers,m_players.front());
                 m_numOfLosers++;
             }
             m_cards.push_back(std::move(m_cards.front()));
@@ -104,13 +183,28 @@ void Mtmchkin::playRound() {}/*{
     if(isGameOver()){
         printGameEndMessage();
     }
-}*/
+}
 
 void Mtmchkin::printLeaderBoard() const{
     printLeaderBoardStartMessage();
     int leaderboardRank=0;
+    for(const shared_ptr<Player> &curWinnerPlayer : m_winnersLeaderBoard){
+        printPlayerLeaderBoard(leaderboardRank+1,*curWinnerPlayer);
+        leaderboardRank++;
+    }
+    for(const shared_ptr<Player> &curStillPlayingPlayer : m_players) {
+        if (!curStillPlayingPlayer->finishedTheGame() && !curStillPlayingPlayer->isKnockedOut()) {
+            printPlayerLeaderBoard(leaderboardRank + 1, *curStillPlayingPlayer);
+            leaderboardRank++;
+        }
+    }
+    for(const shared_ptr<Player> &curLoserPlayer : m_losersLeaderBoard){
+        printPlayerLeaderBoard(leaderboardRank+1,*curLoserPlayer);
+        leaderboardRank++;
+    }
+/*
     for(;leaderboardRank<m_numOfWinners;leaderboardRank++){
-        printPlayerLeaderBoard(leaderboardRank+1,*m_leaderBoard.at(leaderboardRank));
+        printPlayerLeaderBoard(leaderboardRank+1,*m_winnersLeaderBoard.at(leaderboardRank));
         leaderboardRank++;
     }
     for(int playerIndex=0;playerIndex<m_numOfAllPlayer;playerIndex++){
@@ -123,6 +217,7 @@ void Mtmchkin::printLeaderBoard() const{
         printPlayerLeaderBoard(leaderboardRank+1,*m_leaderBoard.at(leaderboardRank+i));
     }
     // printf("\n");
+    */
 }
 
 
