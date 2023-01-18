@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-const string  EXEPTION_ERROR_MESSAGE= "Deck File Error: File format error in line ";
+const string  EXEPTION_ERROR_MESSAGE= "Deck File Error: File format error in line ";//
 
 class DeckFileNotFound : public exception
 {
