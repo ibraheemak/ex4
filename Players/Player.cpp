@@ -137,6 +137,10 @@ std::ostream& operator<<(std::ostream& os, const Player& player1)
 void Player::decreaseForce(int forceToDecrease)
 {
    m_force-=forceToDecrease;   
+   if(m_force<0)
+   {
+    m_force=0;
+   }
 }
 
 bool Player::finishedTheGame() const {

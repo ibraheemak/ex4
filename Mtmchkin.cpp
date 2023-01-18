@@ -172,14 +172,15 @@ void Mtmchkin::playRound(){
             }
             if(m_players.front()->isKnockedOut()){
                 // m_leaderBoard.at(m_numOfAllPlayer-1-m_numOfLosers)=curPlayer;
-                m_losersLeaderBoard.push_back(m_players.front());
+                m_losersLeaderBoard.push_front(m_players.front());//edit55
                 //  m_leaderBoard.insert(m_leaderBoard.begin()+m_numOfWinners+m_numOfLosers,m_players.front());
                 m_numOfLosers++;
             }
             m_cards.push_back(std::move(m_cards.front()));
             m_cards.pop_front();
-            numOfPlayerWhoPlayed++;
+            
         }
+        numOfPlayerWhoPlayed++;//edit55
         m_players.push_back(m_players.front());
         m_players.pop_front();
     }
