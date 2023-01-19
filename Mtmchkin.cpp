@@ -114,16 +114,35 @@ bool Mtmchkin::checkName(const string& name)
 
 }
 
-void Mtmchkin::enterSize(int& teamSize)
+int Mtmchkin::enterSize(string& tempTeamSize)
 {
-    printEnterTeamSizeMessage();
-    cin>>teamSize;
-    while(teamSize<2 || teamSize>6){
+    bool correct=false;
+    int teamSize;
+    while(correct==false)
+    {
+        correct=true;
+       printEnterTeamSizeMessage();
+       cin>>tempTeamSize;
+       try
+       {
+        teamSize=stoi(tempTeamSize);
+       }
+       catch (const invalid_argument& e)
+        {
+            printInvalidTeamSize();
+            correct=false;
+        }
+        catch (const out_of_range& e)
+        {
+           printInvalidTeamSize();
+           correct=false;
+        }
+    if(correct==true&&(teamSize<2 || teamSize>6)){
         printInvalidTeamSize();
-        printEnterTeamSizeMessage();
-        cin>>teamSize;
+        correct=false;
     }
-    // cout<<teamSize<<endl;
+    }
+    return teamSize;
 }
 ///////////////////////////////////////////////////////////
 Mtmchkin::Mtmchkin(const std::string &fileName)
@@ -144,8 +163,8 @@ Mtmchkin::Mtmchkin(const std::string &fileName)
     if(cardCounter<5){
         throw DeckFileInvalidSize();
     }
-    int teamSize;
-    enterSize(teamSize);
+    string tempTeamSize;//edit3
+    int teamSize=enterSize(tempTeamSize);
     readPlayerAux(teamSize);
     // cout<<"finished"<<endl;
     m_numOfRounds=0;

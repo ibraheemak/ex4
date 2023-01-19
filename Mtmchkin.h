@@ -72,7 +72,7 @@ private:
     void readPlayerAux(int teamSize);
     bool readPlayerType(const string& name,const string &playerType);
     bool checkName(const string& name);
-    void enterSize(int& teamSize);
+    int enterSize(string& teamSize);
     deque<unique_ptr<Card>> m_cards;
     deque<shared_ptr<Player>> m_players;
     int m_numOfRounds; // add it to constructor

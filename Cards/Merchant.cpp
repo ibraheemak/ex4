@@ -5,12 +5,13 @@
 
 void Merchant::Encounter(Player *player) const {
     string str;
-    int potion=NO_POTION;
+   int potion=NO_POTION;
     int price = NOTHING;
     printMerchantInitialMessageForInteractiveEncounter(cout, player->getName(), player->getCoins());
     do
     {
-        getline(std::cin, str);
+        //getline(std::cin, str);
+        cin>>str;
         try
         {
             potion = stoi(str);
