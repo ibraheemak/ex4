@@ -153,6 +153,10 @@ Mtmchkin::Mtmchkin(const std::string &fileName)
     if(!file.is_open()){
         throw DeckFileNotFound();
     }
+    if (file.peek() == EOF)
+    {
+        throw DeckFileInvalidSize();
+    }
     string type;
     while(!file.eof()){
         getline(file,type);
