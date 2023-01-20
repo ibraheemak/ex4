@@ -3,6 +3,8 @@
         "xstring": "cpp",
         "string": "cpp",
         "queue": "cpp",
-        "memory": "cpp"
+        "memory": "cpp",
+        "iosfwd": "cpp",
+        "iostream": "cpp"
     }
 }
