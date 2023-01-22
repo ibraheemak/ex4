@@ -18,8 +18,6 @@ add_executable(ex4
         Exception.h
         Mtmchkin.h
         Mtmchkin.cpp
-        helper.cpp
-        helper.h
         utilities.cpp
         utilities.h
         Cards/Card.h
@@ -42,7 +40,7 @@ add_executable(ex4
         Cards/Well.cpp
         Cards/Barfight.cpp
         Cards/Barfight.h
-
+        tool/main.cpp
 
 
 

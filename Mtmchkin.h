@@ -1,5 +1,6 @@
 #ifndef MTMCHKIN_H_
 #define MTMCHKIN_H_
+
 #include "Players/Player.h"
 #include "Players/Warrior.h"
 #include "Players/Ninja.h"
@@ -7,7 +8,6 @@
 #include "Cards/Card.h"
 #include <fstream>
 #include "Exception.h"
-using std::ifstream;
 #include <string>
 #include "utilities.h"
 #include <deque>
@@ -21,6 +21,8 @@ using std::ifstream;
 #include "Cards/Barfight.h"
 #include <memory> //!! I added this for me
 #include <vector>
+using std::ifstream;
+
 class Mtmchkin{
 
 public:
@@ -67,23 +69,30 @@ public:
     */
     int getNumberOfRounds() const;
 
+    Mtmchkin()=delete;
+    Mtmchkin(Mtmchkin &m)=delete;
+    Mtmchkin& operator=(const Mtmchkin &m)=delete;
+
 private:
+    // Aux functions
     void readCardAux(const string& type,int line);
     void readPlayerAux(int teamSize);
     bool readPlayerType(const string& name,const string &playerType);
-    bool checkName(const string& name);
-    int enterSize(string& teamSize);
+    // members
+    // NOTE: WE USED SHARED PNT FOR PLAYERS, SO BOTH OF LEADERBOARD AND M_PLAYERS COULD SHARE TO THE SAME OBJECT
     deque<unique_ptr<Card>> m_cards;
     deque<shared_ptr<Player>> m_players;
-    int m_numOfRounds; // add it to constructor
-    // int m_teamSize;
     deque<shared_ptr<Player>> m_winnersLeaderBoard;
     deque<shared_ptr<Player>> m_losersLeaderBoard;
+    int m_numOfRounds;
     int m_numOfWinners;
     int m_numOfLosers;
     int m_numOfAllPlayer;
 
 };
+// helpful functions:
+bool checkName(const string& name);
+int enterSize(string& teamSize);
 
 
 

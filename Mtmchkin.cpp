@@ -3,7 +3,6 @@
 
 void Mtmchkin::readCardAux(const string& type,int line)
 {
-    // cout<<type<<endl;
     if(type=="Witch"){ //Vampire
         m_cards.push_back(std::move(unique_ptr<Card>(new Witch)));
     }
@@ -24,18 +23,6 @@ void Mtmchkin::readCardAux(const string& type,int line)
     }
     else if(type=="Dragon") {
         m_cards.push_back(std::move(unique_ptr<Card>(new Dragon)));
-        /*
-        cout<<"successful push for Dragon"<<endl;
-        cout<<"successful push for Dragon .1"<<endl;
-        try {
-            m_cards.push_back(std::move(unique_ptr<Card>(new Dragon)));
-        }
-        catch(std::exception &e){
-            cout<<e.what()<<endl;
-            cout<<"successful push for Dragon .12"<<endl;
-        }
-        cout<<"successful push for Dragon .2"<<endl;
-        */
     }
     else if(type=="Barfight"){
         m_cards.push_back(std::move(unique_ptr<Card>(new Barfight)));
@@ -43,8 +30,6 @@ void Mtmchkin::readCardAux(const string& type,int line)
     else{
         throw DeckFileFormatError(line); // redefine it with param (int& line)
     }
-    // cards.push_back(card);
-    // cout<<"successful push"<<endl;
 }
 
 void Mtmchkin::readPlayerAux(int teamSize){
@@ -97,7 +82,7 @@ bool Mtmchkin::readPlayerType(const string& name,const string &playerType)
     return true;
 }
 
-bool Mtmchkin::checkName(const string& name)
+bool checkName(const string& name)
 {
     for(int i=0;i<(int)name.size();i++)
     {
@@ -114,11 +99,11 @@ bool Mtmchkin::checkName(const string& name)
 
 }
 
-int Mtmchkin::enterSize(string& tempTeamSize)
+int enterSize(string& tempTeamSize)
 {
     bool correct=false;
     int teamSize;
-    while(correct==false)
+    while(!correct)
     {
         correct=true;
        printEnterTeamSizeMessage();
@@ -137,7 +122,7 @@ int Mtmchkin::enterSize(string& tempTeamSize)
            printInvalidTeamSize();
            correct=false;
         }
-    if(correct==true&&(teamSize<2 || teamSize>6)){
+    if(correct&&(teamSize<2 || teamSize>6)){
         printInvalidTeamSize();
         correct=false;
     }
@@ -160,50 +145,41 @@ Mtmchkin::Mtmchkin(const std::string &fileName)
     string type;
     while(!file.eof()){
         getline(file,type);
-        // cout<<type<<endl;
         readCardAux(type,cardCounter);
         cardCounter++;
     }
     if(cardCounter<5){
         throw DeckFileInvalidSize();
     }
-    string tempTeamSize;//edit3
+    string tempTeamSize;
     int teamSize=enterSize(tempTeamSize);
     readPlayerAux(teamSize);
-    // cout<<"finished"<<endl;
     m_numOfRounds=0;
     m_numOfWinners=0;
     m_numOfLosers=0;
     m_numOfAllPlayer=(int)m_players.size();
-    //!! m_leaderBoard; should we do anything here?
 }
-
+// NOTE: WE USED SHARED PNT FOR PLAYERS, SO BOTH OF M_LEADERBOARD AND M_PLAYERS COULD SHARE TO THE SAME OBJECT
 void Mtmchkin::playRound(){
-    // m_leaderBoard.resize(m_numOfAllPlayer); //!! like this?
     m_numOfRounds++;
     int numOfPlayerWhoPlayed=0; // who played this cur round
     printRoundStartMessage(m_numOfRounds);
     while(numOfPlayerWhoPlayed<m_numOfAllPlayer){
         if(  !(m_players.front()->isKnockedOut()) && !(m_players.front()->finishedTheGame()) ){
             printTurnStartMessage(m_players.front()->getName());
-            m_cards.front()->Encounter(&(*m_players.front())); //!! is this okay?
+            m_cards.front()->Encounter(&(*m_players.front()));
             if(m_players.front()->finishedTheGame()){
-                // m_leaderBoard.at(m_numOfWinners)=curPlayer;
                 m_winnersLeaderBoard.push_back(m_players.front());
-                // m_leaderBoard.insert(m_leaderBoard.begin()+m_numOfWinners,m_players.front());
                 m_numOfWinners++;
             }
             if(m_players.front()->isKnockedOut()){
-                // m_leaderBoard.at(m_numOfAllPlayer-1-m_numOfLosers)=curPlayer;
-                m_losersLeaderBoard.push_front(m_players.front());//edit55
-                //  m_leaderBoard.insert(m_leaderBoard.begin()+m_numOfWinners+m_numOfLosers,m_players.front());
+                m_losersLeaderBoard.push_front(m_players.front());
                 m_numOfLosers++;
             }
             m_cards.push_back(std::move(m_cards.front()));
             m_cards.pop_front();
-            
         }
-        numOfPlayerWhoPlayed++;//edit55
+        numOfPlayerWhoPlayed++;
         m_players.push_back(m_players.front());
         m_players.pop_front();
     }
@@ -229,22 +205,6 @@ void Mtmchkin::printLeaderBoard() const{
         printPlayerLeaderBoard(leaderboardRank+1,*curLoserPlayer);
         leaderboardRank++;
     }
-/*
-    for(;leaderboardRank<m_numOfWinners;leaderboardRank++){
-        printPlayerLeaderBoard(leaderboardRank+1,*m_winnersLeaderBoard.at(leaderboardRank));
-        leaderboardRank++;
-    }
-    for(int playerIndex=0;playerIndex<m_numOfAllPlayer;playerIndex++){
-        if(!m_players.at(playerIndex)->finishedTheGame() && !m_players.at(playerIndex)->isKnockedOut()){
-            printPlayerLeaderBoard(leaderboardRank+1,*m_players.at(playerIndex));
-            leaderboardRank++;
-        }
-    }
-    for(int i=0;i<m_numOfLosers;i++){
-        printPlayerLeaderBoard(leaderboardRank+1,*m_leaderBoard.at(leaderboardRank+i));
-    }
-    // printf("\n");
-    */
 }
 
 

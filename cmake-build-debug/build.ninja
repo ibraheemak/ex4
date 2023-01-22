@@ -84,20 +84,6 @@ build CMakeFiles/ex4.dir/Mtmchkin.cpp.obj: CXX_COMPILER__ex4_Debug C$:/Users/ram
   OBJECT_DIR = CMakeFiles\ex4.dir
   OBJECT_FILE_DIR = CMakeFiles\ex4.dir
 
-build CMakeFiles/ex4.dir/helper.cpp.obj: CXX_COMPILER__ex4_Debug C$:/Users/ramse/OneDrive/Documents/GitHub/ex4/helper.cpp || cmake_object_order_depends_target_ex4
-  DEP_FILE = CMakeFiles\ex4.dir\helper.cpp.obj.d
-  FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/ramse/OneDrive/Documents/GitHub/ex4/. -IC:/Users/ramse/OneDrive/Documents/GitHub/ex4/Players
-  OBJECT_DIR = CMakeFiles\ex4.dir
-  OBJECT_FILE_DIR = CMakeFiles\ex4.dir
-
-build CMakeFiles/ex4.dir/test.cpp.obj: CXX_COMPILER__ex4_Debug C$:/Users/ramse/OneDrive/Documents/GitHub/ex4/test.cpp || cmake_object_order_depends_target_ex4
-  DEP_FILE = CMakeFiles\ex4.dir\test.cpp.obj.d
-  FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/ramse/OneDrive/Documents/GitHub/ex4/. -IC:/Users/ramse/OneDrive/Documents/GitHub/ex4/Players
-  OBJECT_DIR = CMakeFiles\ex4.dir
-  OBJECT_FILE_DIR = CMakeFiles\ex4.dir
-
 build CMakeFiles/ex4.dir/utilities.cpp.obj: CXX_COMPILER__ex4_Debug C$:/Users/ramse/OneDrive/Documents/GitHub/ex4/utilities.cpp || cmake_object_order_depends_target_ex4
   DEP_FILE = CMakeFiles\ex4.dir\utilities.cpp.obj.d
   FLAGS = -g -std=gnu++14
@@ -175,6 +161,13 @@ build CMakeFiles/ex4.dir/Cards/Barfight.cpp.obj: CXX_COMPILER__ex4_Debug C$:/Use
   OBJECT_DIR = CMakeFiles\ex4.dir
   OBJECT_FILE_DIR = CMakeFiles\ex4.dir\Cards
 
+build CMakeFiles/ex4.dir/tool/main.cpp.obj: CXX_COMPILER__ex4_Debug C$:/Users/ramse/OneDrive/Documents/GitHub/ex4/tool/main.cpp || cmake_object_order_depends_target_ex4
+  DEP_FILE = CMakeFiles\ex4.dir\tool\main.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  INCLUDES = -IC:/Users/ramse/OneDrive/Documents/GitHub/ex4/. -IC:/Users/ramse/OneDrive/Documents/GitHub/ex4/Players
+  OBJECT_DIR = CMakeFiles\ex4.dir
+  OBJECT_FILE_DIR = CMakeFiles\ex4.dir\tool
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ex4
@@ -183,7 +176,7 @@ build CMakeFiles/ex4.dir/Cards/Barfight.cpp.obj: CXX_COMPILER__ex4_Debug C$:/Use
 #############################################
 # Link the executable ex4.exe
 
-build ex4.exe: CXX_EXECUTABLE_LINKER__ex4_Debug CMakeFiles/ex4.dir/Players/Healer.cpp.obj CMakeFiles/ex4.dir/Players/Ninja.cpp.obj CMakeFiles/ex4.dir/Players/Player.cpp.obj CMakeFiles/ex4.dir/Players/Warrior.cpp.obj CMakeFiles/ex4.dir/Mtmchkin.cpp.obj CMakeFiles/ex4.dir/helper.cpp.obj CMakeFiles/ex4.dir/test.cpp.obj CMakeFiles/ex4.dir/utilities.cpp.obj CMakeFiles/ex4.dir/Cards/Card.cpp.obj CMakeFiles/ex4.dir/Cards/BattleCard.cpp.obj CMakeFiles/ex4.dir/Cards/Gremlin.cpp.obj CMakeFiles/ex4.dir/Cards/Witch.cpp.obj CMakeFiles/ex4.dir/Cards/Dragon.cpp.obj CMakeFiles/ex4.dir/Cards/Mana.cpp.obj CMakeFiles/ex4.dir/Cards/Merchant.cpp.obj CMakeFiles/ex4.dir/Cards/Treasure.cpp.obj CMakeFiles/ex4.dir/Cards/Well.cpp.obj CMakeFiles/ex4.dir/Cards/Barfight.cpp.obj
+build ex4.exe: CXX_EXECUTABLE_LINKER__ex4_Debug CMakeFiles/ex4.dir/Players/Healer.cpp.obj CMakeFiles/ex4.dir/Players/Ninja.cpp.obj CMakeFiles/ex4.dir/Players/Player.cpp.obj CMakeFiles/ex4.dir/Players/Warrior.cpp.obj CMakeFiles/ex4.dir/Mtmchkin.cpp.obj CMakeFiles/ex4.dir/utilities.cpp.obj CMakeFiles/ex4.dir/Cards/Card.cpp.obj CMakeFiles/ex4.dir/Cards/BattleCard.cpp.obj CMakeFiles/ex4.dir/Cards/Gremlin.cpp.obj CMakeFiles/ex4.dir/Cards/Witch.cpp.obj CMakeFiles/ex4.dir/Cards/Dragon.cpp.obj CMakeFiles/ex4.dir/Cards/Mana.cpp.obj CMakeFiles/ex4.dir/Cards/Merchant.cpp.obj CMakeFiles/ex4.dir/Cards/Treasure.cpp.obj CMakeFiles/ex4.dir/Cards/Well.cpp.obj CMakeFiles/ex4.dir/Cards/Barfight.cpp.obj CMakeFiles/ex4.dir/tool/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ex4.dir
